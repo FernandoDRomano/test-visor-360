@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor 360</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css"/>
+</head>
+<body>
+    <h1>Visor 360</h1>
+
+  
+    <!-- the viewer container must have a defined size -->
+    <div id="viewer" style="width: 90%; height: 100vh;"></div>
+
+    
+  <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+  <script>
+    const viewer = new PhotoSphereViewer.Viewer({
+      container: document.querySelector('#viewer'),
+      panorama: './img/img360.jpg',
+      caption: 'El fondo de mi casa <b>&copy; Fernando Daniel Romano</b>',
+      loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
+      defaultLat: -Math.PI / 2,
+        defaultLong: Math.PI,
+        defaultZoomLvl: 0,
+        fisheye: 4,
+      lang: {
+            autorotate: 'Rotación automatica',
+            zoom      : 'Zoom',
+            zoomOut   : 'Zoom out',
+            zoomIn    : 'Zoom in',
+            move      : 'Move',
+            download  : 'Descarga',
+            fullscreen: 'Pantalla Completa',
+            menu      : 'Menu',
+            twoFingers: 'Use dos dedos para navegar',
+            ctrlZoom  : 'Use ctrl + scroll to zoom the image',
+            loadError : 'The panorama can\'t be loaded',
+      },
+      navbar: [
+        'download',
+        'zoom',
+        'caption',
+        'fullscreen',
+      ],
+
+    });
+
+    viewer.on('ready', intro);
+
+    function intro() {
+    // default far plane is too close to render fisheye=4
+    // you can also skip this line and start with fisheye=2
+    viewer.renderer.camera.far *= 2;
+
+    new PhotoSphereViewer.Animation({
+        properties: {
+        lat: { start: -Math.PI / 2, end: 0 },
+        long: { start: Math.PI, end: 0 },
+        zoom: { start: 0, end: 50 },
+        fisheye: { start: 4, end: 0 },
+        },
+        duration: 2000,
+        easing: 'inOutQuad',
+        onTick: (properties) => {
+        viewer.setOption('fisheye', properties.fisheye);
+        viewer.rotate({ longitude: properties.long, latitude: properties.lat });
+        viewer.zoom(properties.zoom);
+        }
+    });
+    }
+
+  </script>
+</body>
+</html>

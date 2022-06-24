@@ -27,11 +27,11 @@
       container: document.querySelector('#viewer'),
       panorama: './img/img360.jpg',
       caption: 'El fondo de mi casa <b>&copy; Fernando Daniel Romano</b>',
-      loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
-      defaultLat: -Math.PI / 2,
-        defaultLong: Math.PI,
-        defaultZoomLvl: 0,
-        fisheye: 4,
+      //loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
+      //defaultLat: -Math.PI / 2,
+      //defaultLong: Math.PI,
+      //defaultZoomLvl: 0,
+      //fisheye: 4,
       lang: {
             autorotate: 'Rotación automatica',
             zoom      : 'Zoom',
@@ -46,6 +46,7 @@
             loadError : 'The panorama can\'t be loaded',
       },
       navbar: [
+        'autorotate',
         'download',
         'zoom',
         'caption',
@@ -54,6 +55,7 @@
 
     });
 
+    /*
     viewer.on('ready', intro);
 
     function intro() {
@@ -77,6 +79,7 @@
         }
     });
     }
+    */
 
   </script>
 </body>

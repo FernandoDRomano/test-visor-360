@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Visor 360</h1>
-    <p>Probando el giroscopio</p>
+    <p>Probando el giroscopio 2</p>
 
   
     <!-- the viewer container must have a defined size -->
@@ -46,6 +46,7 @@
             twoFingers: 'Use dos dedos para navegar',
             ctrlZoom  : 'Use ctrl + scroll to zoom the image',
             loadError : 'The panorama can\'t be loaded',
+            gyroscope : 'Gyroscope',
       },
       navbar: [
         'autorotate',
@@ -53,11 +54,15 @@
         'zoom',
         'caption',
         'fullscreen',
+        'gyroscope'
       ],
 
       plugins: [
         PhotoSphereViewer.GyroscopePlugin,
       ],
+
+      //moveMode: 'fast',
+      //absolutePosition: true
     });
 
     /*

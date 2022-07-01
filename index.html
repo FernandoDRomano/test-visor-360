@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visor 360</title>
-    <p>Probando el giroscopio</p>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css"/>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Visor 360</h1>
+    <p>Probando el giroscopio</p>
 
   
     <!-- the viewer container must have a defined size -->
@@ -23,6 +23,7 @@
   <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+  <script src="plugins/gyroscope.js"></script>
   <script>
     const viewer = new PhotoSphereViewer.Viewer({
       container: document.querySelector('#viewer'),
